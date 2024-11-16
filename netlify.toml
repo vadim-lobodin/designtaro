@@ -1,0 +1,24 @@
+[build]
+  command = "pnpm run netlify-build"
+  publish = ".next/standalone"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_TELEMETRY_DISABLED = "1"
+  NODE_VERSION = "18"
+  NEXT_USE_STANDALONE = "1"
+  NEXT_PUBLIC_APP_URL = "https://designtaro.netlify.app"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
