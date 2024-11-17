@@ -20,8 +20,8 @@ interface CardRingRef {
 const Card = ({ position, rotation, index, isSelected, onClick, originalPosition }: CardProps) => {
   const cardRef = useRef<Group>(null)
   const [frontTexture, backTexture] = useLoader(TextureLoader, [
-    `/content/${index + 1}-f.png`,
-    `/content/${index + 1}-b.png`
+    `/content/${index + 1}-f.jpg`,
+    `/content/b.jpg`
   ])
 
   // Create rounded rectangle shape

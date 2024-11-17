@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { CardRing } from './CardRing'
 import { forwardRef, ForwardRefRenderFunction, useRef, useEffect } from 'react'
-import { Loader } from '@react-three/drei'
+import { Html } from '@react-three/drei'
 
 interface SceneRef {
   selectRandomCard: () => void
@@ -28,26 +28,33 @@ const SceneComponent: ForwardRefRenderFunction<SceneRef, SceneProps> = ({ onLoad
     <div className="relative w-full h-full bg-black">
       <Canvas
         camera={{
-          position: [0, 5, 58],
-          fov: 75,
+          position: [0, 5, 65],
+          fov: 60,
           near: 0.1,
           far: 1000,
         }}
         gl={{ antialias: true }}
         onCreated={() => {
-          // Call onLoaded when the Canvas is ready
           onLoaded()
         }}
       >
         <color attach="background" args={['#000000']} />
-        <ambientLight intensity={2} />
+        <ambientLight intensity={2.5} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />
         <pointLight position={[-10, -10, -10]} intensity={0.8} />
         <pointLight position={[10, -10, 10]} intensity={0.8} />
         <pointLight position={[-10, 10, -10]} intensity={0.8} />
         <CardRing ref={cardRingRef} />
+        <Html center>
+          <div className="flex justify-center items-center">
+            <img 
+              src="/preloader.gif" 
+              alt="Loading..."
+              className="w-[100px] h-[100px]"
+            />
+          </div>
+        </Html>
       </Canvas>
-      <Loader />
     </div>
   )
 }
