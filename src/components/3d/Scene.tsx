@@ -21,20 +21,17 @@ const SceneComponent: ForwardRefRenderFunction<SceneRef, {}> = (props, ref) => {
   }, [ref])
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full bg-background">
       <Canvas
         camera={{
-          position: [0, 5, 60],
+          position: [0, 5, 58],
           fov: 75,
           near: 0.1,
           far: 1000,
         }}
       >
-        <ambientLight intensity={2} />
-        <pointLight position={[10, 10, 10]} intensity={1.5} />
-        <pointLight position={[-10, -10, -10]} intensity={0.8} />
-        <pointLight position={[10, -10, 10]} intensity={0.8} />
-        <pointLight position={[-10, 10, -10]} intensity={0.8} />
+        <color attach="background" args={['#000000']} />
+        <ambientLight intensity={3} />
         <OrbitControls 
           enableZoom={true}
           minPolarAngle={Math.PI / 3}

@@ -1,19 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    unoptimized: true,
+  output: 'standalone',
+  reactStrictMode: true,
+  swcMinify: true,
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
   },
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(glb|gltf)$/,
-      use: {
-        loader: 'file-loader',
-      },
-    })
-    return config
-  },
-  output: 'export',
-  distDir: 'out',
 }
 
 module.exports = nextConfig

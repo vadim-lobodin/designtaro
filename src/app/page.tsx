@@ -14,7 +14,7 @@ export default function Home() {
   }
 
   return (
-    <main className="relative h-screen w-full">
+    <main className="relative h-screen w-full bg-background text-foreground">
       <div className="absolute inset-0">
         <Scene ref={sceneRef} />
       </div>
@@ -22,9 +22,9 @@ export default function Home() {
         <Button
           onClick={handleFutureClick}
           disabled={showFuture}
-          className="text-lg"
+          className="text-lg bg-primary hover:bg-primary/90"
         >
-          I want to see my future
+          Show me my future
         </Button>
       </div>
     </main>
