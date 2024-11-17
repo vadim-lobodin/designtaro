@@ -10,6 +10,26 @@
   NODE_VERSION = "18"
   NEXT_PUBLIC_APP_URL = "https://designtaro.netlify.app"
 
+# Redirect rules for Next.js
+[[redirects]]
+  from = "/*"
+  to = "/_next/static/:splat"
+  status = 200
+  force = true
+  conditions = {Path = "/_next/static/*"}
+
+[[redirects]]
+  from = "/*"
+  to = "/api/:splat"
+  status = 200
+  force = true
+  conditions = {Path = "/api/*"}
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
