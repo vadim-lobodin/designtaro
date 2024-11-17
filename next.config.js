@@ -12,6 +12,10 @@ const nextConfig = {
     })
     return config
   },
+  output: 'export',
+  experimental: {
+    serverActions: false,
+  },
 }
 
 module.exports = nextConfig
