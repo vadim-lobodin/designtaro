@@ -137,7 +137,7 @@ const Card = ({ position, rotation, index, isSelected, onClick, originalPosition
     <group
       ref={cardRef}
       position={position}
-      rotation={[rotation[0], rotation[1] + Math.PI, rotation[2]]} // Add Math.PI to initial rotation
+      rotation={[rotation[0], rotation[1] + Math.PI, rotation[2]]}
       onClick={onClick}
       scale={isSelected ? 1.2 : 1}
     >
@@ -145,7 +145,7 @@ const Card = ({ position, rotation, index, isSelected, onClick, originalPosition
       <mesh position={[0, 0, 0.05]}>
         <extrudeGeometry args={[roundedRectShape, extrudeSettings]} />
         <meshStandardMaterial 
-          map={frontTexture}
+          map={isSelected ? frontTexture : backTexture}
           side={FrontSide}
           transparent={true}
           opacity={1}
