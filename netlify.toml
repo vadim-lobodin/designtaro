@@ -1,42 +1,11 @@
 [build]
   command = "pnpm run build"
-  publish = ".next"
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ."
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    # Enable the plugin for Next.js 14+ app router
-    appDir = true
-    # Enable streaming and edge runtime support
-    experimentalStreamingAppDir = true
+  publish = "out"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_VERSION = "18"
   NEXT_PUBLIC_APP_URL = "https://designtaro.netlify.app"
-  # Enable Next.js app directory
-  NEXT_USE_APP_DIR = "true"
-
-# Redirect rules for Next.js
-[[redirects]]
-  from = "/*"
-  to = "/_next/static/:splat"
-  status = 200
-  force = true
-  conditions = {Path = "/_next/static/*"}
-
-[[redirects]]
-  from = "/*"
-  to = "/api/:splat"
-  status = 200
-  force = true
-  conditions = {Path = "/api/*"}
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 [[headers]]
   for = "/*"
@@ -54,3 +23,9 @@
   for = "/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Handle client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

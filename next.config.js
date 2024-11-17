@@ -13,9 +13,7 @@ const nextConfig = {
     return config
   },
   output: 'export',
-  experimental: {
-    serverActions: false,
-  },
+  distDir: 'out',
 }
 
 module.exports = nextConfig
