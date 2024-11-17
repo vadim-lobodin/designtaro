@@ -1,13 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '2mb',
-    },
+  images: {
+    unoptimized: true
   },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(png|jpg|jpeg|gif|ico|webp)$/i,
+      type: 'asset/resource'
+    })
+    return config
+  }
 }
 
 module.exports = nextConfig

@@ -1,5 +1,4 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
 import { CardRing } from './CardRing'
 import { forwardRef, ForwardRefRenderFunction, useRef, useEffect } from 'react'
 
@@ -21,7 +20,7 @@ const SceneComponent: ForwardRefRenderFunction<SceneRef, {}> = (props, ref) => {
   }, [ref])
 
   return (
-    <div className="relative w-full h-full bg-background">
+    <div className="relative w-full h-full bg-black">
       <Canvas
         camera={{
           position: [0, 5, 58],
@@ -29,15 +28,14 @@ const SceneComponent: ForwardRefRenderFunction<SceneRef, {}> = (props, ref) => {
           near: 0.1,
           far: 1000,
         }}
+        gl={{ antialias: true }}
       >
         <color attach="background" args={['#000000']} />
-        <ambientLight intensity={3} />
-        <OrbitControls 
-          enableZoom={true}
-          minPolarAngle={Math.PI / 3}
-          maxPolarAngle={Math.PI / 1.5}
-          enablePan={false}
-        />
+        <ambientLight intensity={2} />
+        <pointLight position={[10, 10, 10]} intensity={1.5} />
+        <pointLight position={[-10, -10, -10]} intensity={0.8} />
+        <pointLight position={[10, -10, 10]} intensity={0.8} />
+        <pointLight position={[-10, 10, -10]} intensity={0.8} />
         <CardRing ref={cardRingRef} />
       </Canvas>
     </div>
